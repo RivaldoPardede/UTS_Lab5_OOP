@@ -1,14 +1,37 @@
 package soal1.uts.pbo5.view;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+import soal1.uts.pbo5.controller.*;
+import soal1.uts.pbo5.model.*;
 public class ProgramMenu {
-
-    public static void displayMainMenu() {
+    public static void displayMainMenu(ArrayList<Song>mySongs) {
         System.out.println("==== Welcome to OpenMusic Program =====");
+        System.out.println("You currently have: " + mySongs.size() + " song(s).");
         System.out.println("Song's Menu");
-        System.out.println("1. Add Song\n2. Get Songs\n3. Edit Song\n4. Delete Song\n5. Add Song To Playlist\n");
-        System.out.println("Playlist's Menu");
-        System.out.println("6. Add Playlist\n7. Get Playlists\n8. Delete Playlist\n");
+        System.out.println("1. Add Song\n2. Get Songs\n3. Edit Song\n4. Delete Song\n");
         System.out.println("MediaPlayer's Menu");
-        System.out.println("9. Play Song\n10. Pause Song");
+        System.out.println("5. Play Song\n6. Pause Song");
+    }
+
+    public static void displayAddSongMenu(ArrayList<Song>mySongs, Scanner scanner) {
+        System.out.println("\n\n==== Add Song =====");
+
+        scanner.nextLine();
+        System.out.print("Enter song title: ");
+        String title = scanner.nextLine();
+
+        System.out.print("Enter song performer: ");
+        String performer = scanner.nextLine();
+
+        System.out.print("Enter song genre: ");
+        String genre = scanner.nextLine();
+
+        System.out.print("Enter song duration: ");
+        int duration = scanner.nextInt();
+        scanner.close();
+        Song.addSong(mySongs ,title, performer, genre, duration);
+
+        displayMainMenu(mySongs);
     }
 }

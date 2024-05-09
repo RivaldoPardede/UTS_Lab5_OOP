@@ -17,6 +17,6 @@ public class Song {
     public static void addSong(ArrayList<Song>mySongs,String title, String performer, String genre, int duration) {
         Song newSong = new Song(title, performer, genre, duration);
         mySongs.add(newSong);
-        System.out.println("The song \"" + title + "\" has been successfully added.");
+        System.out.println("The song \"" + title + "\" has been successfully added.\n");
     }
 }

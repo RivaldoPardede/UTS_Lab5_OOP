@@ -8,8 +8,22 @@ import soal1.uts.pbo5.view.*;
 
 public class Main {
     public static void main(String[] args) {
-//        ArrayList<Song>mySongs = new ArrayList<>();
+        ArrayList<Song>mySongs = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
-        ProgramMenu.displayMainMenu();
+        ProgramMenu.displayMainMenu(mySongs);
+
+        System.out.print("\nEnter your choice: ");
+        int choice = scanner.nextInt();
+
+        switch (choice) {
+            case 1 :
+                ProgramMenu.displayAddSongMenu(mySongs ,scanner);
+                break;
+            default:
+                System.out.println("Invalid chocie.");
+                break;
+        }
+
+        scanner.close();
     }
 }
