@@ -2,7 +2,6 @@ package soal1.uts.pbo5;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-import soal1.uts.pbo5.controller.*;
 import soal1.uts.pbo5.model.*;
 import soal1.uts.pbo5.view.*;
 
@@ -15,7 +14,7 @@ public class Main {
         System.out.print("\nEnter your choice: ");
         int choice = scanner.nextInt();
 
-        while (choice != 7) {
+        while (choice != 6) {
             switch (choice) {
                 case 1 :
                     ProgramMenu.displayAddSongMenu(mySongs ,scanner);
@@ -31,6 +30,10 @@ public class Main {
                     break;
                 case 4 :
                     ProgramMenu.displayDeleteSongMenu(mySongs, scanner);
+                    ProgramMenu.displayMainMenu(mySongs);
+                    break;
+                case 5 :
+                    ProgramMenu.displayPlaySongMenu(mySongs, scanner);
                     ProgramMenu.displayMainMenu(mySongs);
                     break;
                 default:

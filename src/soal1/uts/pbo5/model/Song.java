@@ -65,4 +65,14 @@ public class Song {
         mySongs.remove(songIndex);
         System.out.println("The song has been successfully deleted.\n");
     }
+
+    public void playSong(ArrayList<Song>mySongs, int songIndex) {
+        Song songToPlay = mySongs.get(songIndex);
+        System.out.println("Now playing: " + songToPlay.title);
+    }
+
+    public void pauseSong(ArrayList<Song>mySongs, int songIndex) {
+        Song songToPause = mySongs.get(songIndex);
+        System.out.println("Now stopping: " + songToPause.title);
+    }
 }

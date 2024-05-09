@@ -1,10 +1,10 @@
 package soal1.uts.pbo5.view;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
 import soal1.uts.pbo5.controller.*;
 import soal1.uts.pbo5.model.*;
+
 public class ProgramMenu {
     public static void displayMainMenu(ArrayList<Song>mySongs) {
         System.out.println("==== Welcome to OpenMusic Program =====");
@@ -14,9 +14,9 @@ public class ProgramMenu {
         System.out.println("1. Add Song\n2. Get Songs\n3. Edit Song\n4. Delete Song\n");
 
         System.out.println("MediaPlayer's Menu");
-        System.out.println("5. Play Song\n6. Pause Song");
+        System.out.println("5. Play Song");
 
-        System.out.println("\n7. Exit");
+        System.out.println("\n6. Exit");
     }
 
     public static void displayAddSongMenu(ArrayList<Song>mySongs, Scanner scanner) {
@@ -59,10 +59,11 @@ public class ProgramMenu {
 
         int songIndex = songNum-1;
 
-        while (songIndex <= 0 && songIndex > mySongs.size()) {
+        while (songIndex < 0 || songIndex >= mySongs.size()) {
             System.out.println("Invalid chocie.");
             System.out.print("Enter the song index you want to edit: ");
-            songIndex = scanner.nextInt();
+            songNum = scanner.nextInt();
+            songIndex = songNum-1;
         }
 
         Song songToEdit = mySongs.get(songIndex);
@@ -81,7 +82,7 @@ public class ProgramMenu {
         String newGenre = scanner.nextLine().trim();
 
         System.out.println("Current duration is " + songToEdit.getDuration() + "s");
-        System.out.print("Enter song duration, press Enter to skip: ");
+        System.out.print("Enter song duration: ");
         int newDuration = scanner.nextInt();
 
         Song.editSong(mySongs, songIndex, newTitle, newPerformer, newGenre, newDuration);
@@ -97,12 +98,41 @@ public class ProgramMenu {
 
         int songIndex = songNum-1;
 
-        while (songIndex <= 0 && songIndex > mySongs.size()) {
+        while (songIndex < 0 || songIndex >= mySongs.size()) {
             System.out.println("Invalid chocie.");
             System.out.print("Enter the song index you want to delete: ");
-            songIndex = scanner.nextInt();
+            songNum = scanner.nextInt();
+            songIndex = songNum-1;
         }
 
         Song.deleteSong(mySongs ,songIndex);
+    }
+
+    public static void displayPlaySongMenu(ArrayList<Song>mySongs, Scanner scanner) {
+        System.out.println("\n\n==== Play Song =====");
+
+        displayGetSongsMenu(mySongs);
+
+        System.out.print("Enter the song index you want to play: ");
+        int songNum = scanner.nextInt();
+
+        int songIndex = songNum-1;
+
+        while (songIndex < 0 || songIndex >= mySongs.size()) {
+            System.out.println("Invalid chocie.");
+            System.out.print("Enter the song index you want to play: ");
+            songNum = scanner.nextInt();
+            songIndex = songNum-1;
+        }
+
+        Song songToPlay = mySongs.get(songIndex);
+        MediaPlayer mediaPlayer = new MediaPlayer(songToPlay.getTitle(), songToPlay.getPerformer(), songToPlay.getGenre(), songToPlay.getDuration());
+
+        mediaPlayer.playSong(mySongs, songIndex);
+        System.out.println("Press Enter to stop the song from playing: ");
+        scanner.nextLine();
+        scanner.nextLine();
+        mediaPlayer.pauseSong(mySongs, songIndex);
+
     }
 }
