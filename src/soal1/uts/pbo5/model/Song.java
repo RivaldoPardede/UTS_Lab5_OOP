@@ -19,4 +19,10 @@ public class Song {
         mySongs.add(newSong);
         System.out.println("The song \"" + title + "\" has been successfully added.\n");
     }
+
+    public static void addSong(ArrayList<Song>mySongs, String title, String performer, int duration) {
+        Song newSong = new Song(title, performer, "none", duration);
+        mySongs.add(newSong);
+        System.out.println("The song \"" + title + "\" with " + newSong.genre + " genre has been successfully added.\n");
+    }
 }

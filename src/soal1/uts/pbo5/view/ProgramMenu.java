@@ -24,13 +24,18 @@ public class ProgramMenu {
         System.out.print("Enter song performer: ");
         String performer = scanner.nextLine();
 
-        System.out.print("Enter song genre: ");
-        String genre = scanner.nextLine();
+        System.out.print("Enter song genre (optional, press Enter to skip): ");
+        String genre = scanner.nextLine().trim();
 
         System.out.print("Enter song duration: ");
         int duration = scanner.nextInt();
         scanner.close();
-        Song.addSong(mySongs ,title, performer, genre, duration);
+
+        if (genre.isEmpty()) {
+            Song.addSong(mySongs, title, performer, duration);
+        } else {
+            Song.addSong(mySongs, title, performer, genre, duration);
+        }
 
         displayMainMenu(mySongs);
     }
