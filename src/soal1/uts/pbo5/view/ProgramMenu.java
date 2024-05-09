@@ -1,5 +1,6 @@
 package soal1.uts.pbo5.view;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
 import soal1.uts.pbo5.controller.*;
@@ -39,8 +40,6 @@ public class ProgramMenu {
         } else {
             Song.addSong(mySongs, title, performer, genre, duration);
         }
-
-        displayMainMenu(mySongs);
     }
 
     public static void displayGetSongsMenu(ArrayList<Song>mySongs) {
@@ -48,7 +47,44 @@ public class ProgramMenu {
 
         System.out.println("Total Song(s): " + mySongs.size() + " song(s).");
         Song.getSongs(mySongs);
+    }
 
-        displayMainMenu(mySongs);
+    public static void displayEditSongMenu(ArrayList<Song>mySongs, Scanner scanner) {
+        System.out.println("\n\n==== Edit Song =====");
+
+        displayGetSongsMenu(mySongs);
+
+        System.out.print("Enter the song index you want to edit: ");
+        int songNum = scanner.nextInt();
+
+        int songIndex = songNum-1;
+
+        while (songIndex <= 0 && songIndex > mySongs.size()) {
+            System.out.println("Invalid chocie.");
+            System.out.print("Enter the song index you want to edit: ");
+            songIndex = scanner.nextInt();
+        }
+
+        Song songToEdit = mySongs.get(songIndex);
+
+        scanner.nextLine();
+        System.out.println("Current title is \"" + songToEdit.getTitle() + "\"");
+        System.out.print("Enter new title, press Enter to skip: ");
+        String newTitle = scanner.nextLine();
+
+        System.out.println("Current performer is " + songToEdit.getPerformer());
+        System.out.print("Enter song performer, press Enter to skip: ");
+        String newPerformer = scanner.nextLine();
+
+        System.out.println("Current genre is " + songToEdit.getGenre());
+        System.out.print("Enter song genre, press Enter to skip: ");
+        String newGenre = scanner.nextLine().trim();
+
+        System.out.println("Current duration is " + songToEdit.getDuration() + "s");
+        System.out.print("Enter song duration, press Enter to skip: ");
+        int newDuration = scanner.nextInt();
+
+        Song.editSong(mySongs, songIndex, newTitle, newPerformer, newGenre, newDuration);
+
     }
 }

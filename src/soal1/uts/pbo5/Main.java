@@ -19,9 +19,15 @@ public class Main {
             switch (choice) {
                 case 1 :
                     ProgramMenu.displayAddSongMenu(mySongs ,scanner);
+                    ProgramMenu.displayMainMenu(mySongs);
                     break;
                 case 2 :
                     ProgramMenu.displayGetSongsMenu(mySongs);
+                    ProgramMenu.displayMainMenu(mySongs);
+                    break;
+                case 3 :
+                    ProgramMenu.displayEditSongMenu(mySongs, scanner);
+                    ProgramMenu.displayMainMenu(mySongs);
                     break;
                 default:
                     System.out.println("Invalid chocie.");

@@ -3,9 +3,9 @@ package soal1.uts.pbo5.model;
 import java.util.ArrayList;
 
 public class Song {
-    String title, performer, genre;
+    private String title, performer, genre;
 
-    int duration;
+    private int duration;
 
     public Song (String title, String performer, String genre, int duration) {
         this.title = title;
@@ -14,7 +14,19 @@ public class Song {
         this.duration = duration;
     }
 
-    public static void addSong(ArrayList<Song>mySongs,String title, String performer, String genre, int duration) {
+    public void setTitle(String title) { this.title = title; }
+    public String getTitle() { return title; }
+
+    public void setPerformer(String performer) { this.performer = performer; }
+    public String getPerformer() { return performer; }
+
+    public void setGenre(String genre) { this.genre = genre; }
+    public String getGenre() { return genre; }
+
+    public void setDuration(int duration) { this.duration = duration; }
+    public int getDuration() { return duration; }
+
+    public static void addSong(ArrayList<Song>mySongs, String title, String performer, String genre, int duration) {
         Song newSong = new Song(title, performer, genre, duration);
         mySongs.add(newSong);
         System.out.println("The song \"" + title + "\" has been successfully added.\n");
@@ -36,5 +48,16 @@ public class Song {
             System.out.println("Song duration: " + song.duration + " detik\n");
         }
         System.out.println();
+    }
+
+    public static void editSong(ArrayList<Song>mySongs, int songIndex, String newTitle, String newPerformer, String newGenre, int newDuration) {
+        Song songToEdit = mySongs.get(songIndex);
+
+        songToEdit.setTitle(newTitle);
+        songToEdit.setPerformer(newPerformer);
+        songToEdit.setGenre(newGenre);
+        songToEdit.setDuration(newDuration);
+
+        System.out.println("The song has been successfully edited.\n");
     }
 }
