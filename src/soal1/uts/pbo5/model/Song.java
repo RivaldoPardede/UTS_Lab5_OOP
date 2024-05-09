@@ -60,4 +60,9 @@ public class Song {
 
         System.out.println("The song has been successfully edited.\n");
     }
+
+    public static void deleteSong(ArrayList<Song>mySongs, int songIndex) {
+        mySongs.remove(songIndex);
+        System.out.println("The song has been successfully deleted.\n");
+    }
 }

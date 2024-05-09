@@ -29,6 +29,10 @@ public class Main {
                     ProgramMenu.displayEditSongMenu(mySongs, scanner);
                     ProgramMenu.displayMainMenu(mySongs);
                     break;
+                case 4 :
+                    ProgramMenu.displayDeleteSongMenu(mySongs, scanner);
+                    ProgramMenu.displayMainMenu(mySongs);
+                    break;
                 default:
                     System.out.println("Invalid chocie.");
                     break;

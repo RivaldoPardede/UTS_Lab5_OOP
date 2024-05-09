@@ -85,6 +85,24 @@ public class ProgramMenu {
         int newDuration = scanner.nextInt();
 
         Song.editSong(mySongs, songIndex, newTitle, newPerformer, newGenre, newDuration);
+    }
 
+    public static void displayDeleteSongMenu(ArrayList<Song>mySongs, Scanner scanner) {
+        System.out.println("\n\n==== Delete Song =====");
+
+        displayGetSongsMenu(mySongs);
+
+        System.out.print("Enter the song index you want to delete: ");
+        int songNum = scanner.nextInt();
+
+        int songIndex = songNum-1;
+
+        while (songIndex <= 0 && songIndex > mySongs.size()) {
+            System.out.println("Invalid chocie.");
+            System.out.print("Enter the song index you want to delete: ");
+            songIndex = scanner.nextInt();
+        }
+
+        Song.deleteSong(mySongs ,songIndex);
     }
 }
