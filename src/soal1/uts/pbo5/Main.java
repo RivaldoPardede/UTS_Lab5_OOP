@@ -60,3 +60,4 @@ public class Main {
         scanner.close();// Menutup objek Scanner setelah selesai digunakan
     }
 }
+//No. 1 done
