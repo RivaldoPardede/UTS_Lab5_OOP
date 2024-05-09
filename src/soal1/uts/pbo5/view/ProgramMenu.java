@@ -8,10 +8,14 @@ public class ProgramMenu {
     public static void displayMainMenu(ArrayList<Song>mySongs) {
         System.out.println("==== Welcome to OpenMusic Program =====");
         System.out.println("You currently have: " + mySongs.size() + " song(s).");
+
         System.out.println("Song's Menu");
         System.out.println("1. Add Song\n2. Get Songs\n3. Edit Song\n4. Delete Song\n");
+
         System.out.println("MediaPlayer's Menu");
         System.out.println("5. Play Song\n6. Pause Song");
+
+        System.out.println("\n7. Exit");
     }
 
     public static void displayAddSongMenu(ArrayList<Song>mySongs, Scanner scanner) {
@@ -29,13 +33,21 @@ public class ProgramMenu {
 
         System.out.print("Enter song duration: ");
         int duration = scanner.nextInt();
-        scanner.close();
 
         if (genre.isEmpty()) {
             Song.addSong(mySongs, title, performer, duration);
         } else {
             Song.addSong(mySongs, title, performer, genre, duration);
         }
+
+        displayMainMenu(mySongs);
+    }
+
+    public static void displayGetSongsMenu(ArrayList<Song>mySongs) {
+        System.out.println("\n\n==== Get Songs =====");
+
+        System.out.println("Total Song(s): " + mySongs.size() + " song(s).");
+        Song.getSongs(mySongs);
 
         displayMainMenu(mySongs);
     }

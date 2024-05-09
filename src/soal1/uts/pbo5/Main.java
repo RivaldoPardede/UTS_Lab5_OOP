@@ -15,13 +15,20 @@ public class Main {
         System.out.print("\nEnter your choice: ");
         int choice = scanner.nextInt();
 
-        switch (choice) {
-            case 1 :
-                ProgramMenu.displayAddSongMenu(mySongs ,scanner);
-                break;
-            default:
-                System.out.println("Invalid chocie.");
-                break;
+        while (choice != 7) {
+            switch (choice) {
+                case 1 :
+                    ProgramMenu.displayAddSongMenu(mySongs ,scanner);
+                    break;
+                case 2 :
+                    ProgramMenu.displayGetSongsMenu(mySongs);
+                    break;
+                default:
+                    System.out.println("Invalid chocie.");
+                    break;
+            }
+            System.out.print("\nEnter your choice: ");
+            choice = scanner.nextInt();
         }
 
         scanner.close();

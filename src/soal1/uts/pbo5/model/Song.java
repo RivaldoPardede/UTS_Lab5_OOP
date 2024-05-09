@@ -25,4 +25,16 @@ public class Song {
         mySongs.add(newSong);
         System.out.println("The song \"" + title + "\" with " + newSong.genre + " genre has been successfully added.\n");
     }
+
+    public static void getSongs(ArrayList<Song>mySongs) {
+        int i = 0;
+        for (Song song : mySongs) {
+            ++i;
+            System.out.println(i + ". Song title: " + song.title);
+            System.out.println("Song performer: " + song.performer);
+            System.out.println("Song genre: " + song.genre);
+            System.out.println("Song duration: " + song.duration + " detik\n");
+        }
+        System.out.println();
+    }
 }
