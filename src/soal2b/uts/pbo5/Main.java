@@ -30,3 +30,4 @@ public class Main {
         System.out.println("\nAnagram Status: " + anagramStatus);
     }
 }
+//No. 2 Done
