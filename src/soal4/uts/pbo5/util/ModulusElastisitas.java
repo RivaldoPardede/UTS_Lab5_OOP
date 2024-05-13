@@ -1,20 +1,36 @@
 package soal4.uts.pbo5.util;
 
+/*
+* Modulus elastisitas atau Young's modulus (E) adalah ukuran dari kekakuan material, dan dapat dihitung menggunakan rumus:
+
+𝐸 = (F*Lo)/(A*deltaL)
+atau
+E = (Stress/Strain)
+
+keterangan:
+F = gaya pegas
+Lo = Panjang Mula-mula
+A = Luas penampang
+deltaL = Pertambahan Panjang
+
+F dapat dicari dengan F = k * x
+keterangan:
+k = konstanta pegas
+x = simpangan pada pegas
+*
+Source: https://www.slideshare.net/slideshow/kumpulan-rumusfisika/15049601*/
 public class ModulusElastisitas {
     private static final double k = 100.0; //konstanta pegas
     private double x; //simpangan pegas
     private double A; //luas penampang yang tegak lurus gaya F
     private double Lo; //panjang mula-mula
     private double deltaL; //pertambahan panjang,
-    private double stress;
-    private double strain;
 
+    public double getK() { return k; }
     public double getX() { return x; }
     public double getA() { return A; }
-    public double Lo() { return Lo; }
+    public double getLo() { return Lo; }
     public double getDeltaL() { return deltaL; }
-    public double getStress() { return stress; }
-    public double getStrain() { return strain; }
 
     public ModulusElastisitas(double x, double A, double Lo, double deltaL) {
         if (x <= 0 || A <= 0 || Lo <= 0 || deltaL <= 0) {
@@ -24,14 +40,6 @@ public class ModulusElastisitas {
         this.A = A;
         this.Lo = Lo;
         this.deltaL = deltaL;
-    }
-
-    public ModulusElastisitas(double stress, double strain) {
-        if (strain <= 0) {
-            throw new IllegalArgumentException("Strain harus positif");
-        }
-        this.stress = stress;
-        this.strain = strain;
     }
 
     public double gayaPegas(double x) {
